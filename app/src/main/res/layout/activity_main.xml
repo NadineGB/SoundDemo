@@ -14,7 +14,7 @@
         android:text="Play"
         app:layout_constraintBottom_toTopOf="@+id/pauseButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +26,20 @@
         android:text="Pause"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playButton" />
+
+    <SeekBar
+        android:id="@+id/volumeSeekBar"
+        android:layout_width="293dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:max="10"
+        android:progress="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton"
+        app:layout_constraintVertical_bias="0.031" />
 </androidx.constraintlayout.widget.ConstraintLayout>
