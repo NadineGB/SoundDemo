@@ -9,11 +9,15 @@ import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
 
     MediaPlayer mediaPlayer;
     SeekBar volumeControl;
+    SeekBar trackControl;
     AudioManager audioManager;
 
     public void play(View view) {
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.i("seekBar Changed", Integer.toString(i));
+                Log.i("seekBar volume Changed", Integer.toString(i));
 
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
             }
@@ -64,5 +68,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        trackControl = findViewById(R.id.trackControl);
+        trackControl.setMax(mediaPlayer.getDuration());
+
+        trackControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.i("seekBar track Changed", Integer.toString(i));
+                mediaPlayer.seekTo(i);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                trackControl.setProgress(mediaPlayer.getCurrentPosition());
+            }
+        }, 0, 300); // sehr Ressourcenaufwändig da der Timer die ganze Zeit läuft
     }
 }

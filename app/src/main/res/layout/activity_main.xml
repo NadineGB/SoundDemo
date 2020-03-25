@@ -14,9 +14,10 @@
         android:text="Play"
         app:layout_constraintBottom_toTopOf="@+id/pauseButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/pauseButton"
@@ -26,20 +27,45 @@
         android:text="Pause"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playButton" />
 
     <SeekBar
+        android:id="@+id/trackControl"
+        android:layout_width="293dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:max="10"
+        android:progress="5"
+        app:layout_constraintBottom_toTopOf="@id/lautstaerkeTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/lautstaerkeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lautstärke"
+        app:layout_constraintBottom_toTopOf="@+id/volumeSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trackControl"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintHorizontal_bias="0.18" />
+
+    <SeekBar
         android:id="@+id/volumeSeekBar"
         android:layout_width="293dp"
-        android:layout_height="100dp"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:max="10"
         android:progress="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pauseButton"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintTop_toBottomOf="@id/lautstaerkeTxt"
+        app:layout_constraintVertical_bias="0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
