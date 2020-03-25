@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     SeekBar trackControl;
     AudioManager audioManager;
 
+    // Button-Programmierung
+
     public void play(View view) {
 
         mediaPlayer.start();
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Lautstärkeregelung
 
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
@@ -68,8 +72,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // TrackControl-Steuerung (Stelle im Track anwählen)
         trackControl = findViewById(R.id.trackControl);
-        trackControl.setMax(mediaPlayer.getDuration());
+        trackControl.setMax(mediaPlayer.getDuration()); //Tracklängespeichern
 
         trackControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -90,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Timer für Trackstellenaktualiseierung
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
